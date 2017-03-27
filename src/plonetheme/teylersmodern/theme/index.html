@@ -27,6 +27,10 @@
 
     <div class="website-wrapper">
 
+    <div id="ajax-spinner">
+        <img src="/++resource++bdajax/loading-spokes.svg" width="64" height="64" alt="" />
+    </div>
+
     <div class="logo-wrapper">
         <div class="brand-logo">Start Bootstrap</div>
     </div>
@@ -35,6 +39,9 @@
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header">
         <div id="slickcarousel">
+        </div>
+        <div id="website-title">
+            <h1 class="website-title"></h1>
         </div>
     </header>
 
@@ -58,9 +65,6 @@
                 <div class="title-container">
                     <h1 class="brand-name">Clean Blog</h1>
                     <span class="subheading"><div class="documentDescription">A Clean Blog Theme by Start Bootstrap</div></span>
-                    <div class="separator-wrapper">
-                        <img src="++resource++plonetheme.teylersmodern/seperator.svg" class="title-separator"/>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -84,37 +88,28 @@
     </footer>
 
     </div>
+
     <a href="#cd-nav" class="cd-nav-trigger outside">Menu 
         <span class="cd-nav-icon"></span>
 
-        <svg x="0px" y="0px" width="90px" height="90px">
-            <rect width="90" height="90" fill="transparent" stroke="#ffffff" stroke-width="2" stroke-dasharray="360 360" stroke-dashoffset="360"></rect>
+        <svg x="0px" y="0px" width="80px" height="80px">
+            <rect width="80" height="80" fill="transparent" stroke="#d75745" stroke-width="2" stroke-dasharray="360 360" stroke-dashoffset="360"></rect>
         </svg>
     </a>
+    
 
     <div id="cd-nav" class="cd-nav">
         <div class="cd-navigation-wrapper">
             
-            <div class="logo-nav-wrapper">
-                <a href="/">
-                    <img id="nav-logo" src="/@@site-logo/logo-full.svg" alt="Het Markienhof" title="Het Markienhof" class="hidden-xs"/>
-                    <img id="nav-logo" src="/++resource++plonetheme.teylersmodern/logo-glyph.svg" alt="Het Markienhof" title="Het Markienhof" class="visible-xs"/>
-                </a>    
-            </div>
-
-            <div class="navigation-search-wrapper" id="nav-search-wrapper">
-            </div>
             <div class="main-block">
+                <div class="col-sm-12 line-wrapper home-wrapper">
+                  <a href="https://www.teylersmuseum.nl" class="btn btn-default">HOME</a>
+                </div>
                 <nav>
                     <ul class="cd-primary-nav">
                         
                     </ul>
                 </nav>
-                <div class="language-wrapper">
-                    <h5>
-                        <a class="lang-link" href="/english/">ENGLISH</a>
-                    </h5>
-                </div>
             </div><!-- .cd-half-block -->
         </div> <!-- .cd-navigation-wrapper -->
         

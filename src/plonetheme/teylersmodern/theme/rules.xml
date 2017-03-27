@@ -7,6 +7,7 @@
 
 
     <theme href="backend.html" css:if-not-content="body.frontend"/>
+    <theme href="index_online_experience.html" css:if-content="body.template-etickets"/>
     <theme href="index.html" css:if-content="body.frontend"/>
 
     <notheme css:if-not-content="#visual-portal-wrapper" />
@@ -62,10 +63,25 @@
         css:theme=".documentDescription"
         css:content-children=".documentDescription"
         method="raw" />
+
+      <replace
+        css:theme-children="#website-title h1.website-title"
+        css:content-children=".documentFirstHeading"
+        method="raw" css:if-content="body.template-cart" />
+
+      <replace
+        css:theme-children="#website-title h1.website-title"
+        css:content-children=".documentFirstHeading"
+        method="raw" css:if-content="body.template-checkout" />
+
+      <replace
+        css:theme-children="#website-title h1.website-title"
+        css:content-children=".documentFirstHeading"
+        method="raw" css:if-content="body.template-mollie_payment_success" />
       
       <drop css:content=".documentDescription"/>
       <drop css:content=".documentFirstHeading"/>
-      <drop css:theme=".nav-home-wrapper" css:if-content="body.site-Markiezenhof"/>
+      <drop css:theme=".nav-home-wrapper" css:if-content="body.site-Plone"/>
       
       <replace
         css:theme-children="#nav-search-wrapper"
@@ -130,9 +146,9 @@
       <replace css:theme="#content-container" method="raw">
 
           <xsl:variable name="central">
-            <xsl:if test="//aside[@id='portal-column-one'] and //aside[@id='portal-column-two']">col-xs-12 col-sm-6</xsl:if>
-            <xsl:if test="//aside[@id='portal-column-two'] and not(//aside[@id='portal-column-one'])">col-xs-12 col-sm-9</xsl:if>
-            <xsl:if test="//aside[@id='portal-column-one'] and not(//aside[@id='portal-column-two'])">col-xs-12 col-sm-9</xsl:if>
+            <xsl:if test="//aside[@id='portal-column-one'] and //aside[@id='portal-column-two']">col-xs-12 col-sm-12</xsl:if>
+            <xsl:if test="//aside[@id='portal-column-two'] and not(//aside[@id='portal-column-one'])">col-xs-12 col-sm-12</xsl:if>
+            <xsl:if test="//aside[@id='portal-column-one'] and not(//aside[@id='portal-column-two'])">col-xs-12 col-sm-12</xsl:if>
             <xsl:if test="not(//aside[@id='portal-column-one']) and not(//aside[@id='portal-column-two'])">col-xs-12 col-sm-12</xsl:if>
           </xsl:variable>
 
@@ -166,7 +182,7 @@
       </rules>
 
       <!-- Right column -->
-      <rules css:if-content="#portal-column-two">
+      <!--<rules css:if-content="#portal-column-two">
         <replace css:theme="#column2-container">
             <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="complementary">
               <aside id="portal-column-two">
@@ -174,8 +190,8 @@
               </aside>
             </div>
         </replace>
-      </rules>
-
+      </rules>-->
+      <drop css:content="#portal-column-two"/>
       <replace css:theme-children="footer .container" css:content-children="#portal-footer-wrapper" />
     
 </rules>

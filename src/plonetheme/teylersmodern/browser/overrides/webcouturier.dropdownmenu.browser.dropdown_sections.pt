@@ -18,15 +18,16 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-
-
-      <div class="plone-collapse plone-navbar-collapse collapse navbar-collapse" id="portal-globalnav-collapse">
+      
         <div class="container-fluid">
         <ul id="portal-globalnav" class="plone-nav plone-navbar-nav navTreeRoot nav navbar-nav"
             tal:define="selected_tab python:view.selected_portal_tab">
+
+            <div class="plone-collapse plone-navbar-collapse collapse navbar-collapse" id="portal-globalnav-collapse">
+
             <div class="container-fluid fluid-tabs">
             <tal:tabs tal:repeat="tab portal_tabs">
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 line-wrapper"
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 line-wrapper"
                 tal:define="tid tab/id;
                               href tab/url;
                               title tab/description|nothing;
