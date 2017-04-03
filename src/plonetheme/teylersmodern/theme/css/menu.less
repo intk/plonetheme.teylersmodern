@@ -236,6 +236,16 @@ body:not(.navigation-is-open) .cd-nav-trigger:hover .cd-nav-icon::before {
   -webkit-transition-timing-function: cubic-bezier(0.86, 0.01, 0.77, 0.78);
   -moz-transition-timing-function: cubic-bezier(0.86, 0.01, 0.77, 0.78);
   transition-timing-function: cubic-bezier(0.86, 0.01, 0.77, 0.78);
+
+  @media(min-width: 992px) {
+    width: 35%;
+  }
+}
+
+.plone-toolbar-expanded .cd-nav .cd-navigation-wrapper {
+  @media(min-width: 992px) {
+    width: calc(~"35% + 105px");
+  }
 }
 
 .cd-nav .cd-navigation-wrapper {
@@ -522,7 +532,7 @@ ul.cd-primary-nav {
 }
 
 .plone-toolbar-expanded .cd-navigation-wrapper {
-  padding-left: 205px;
+  padding-left: 105px;
   padding-right: 0px;
 }
 

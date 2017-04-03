@@ -3460,6 +3460,11 @@ body.template-checkout {
 	    height: 43px;
 	    padding: 7px 18px;
 	    line-height: 17px;
+	    -moz-appearance: none !important;
+	    text-indent: 0.01px !important;
+	    text-overflow: '' !important;
+	    overflow: hidden;
+	    vertical-align: top;
 
 	    &:hover {
 	    	cursor: pointer;
@@ -3781,8 +3786,8 @@ body.template-checkout {
 
 .home-wrapper {
 	padding-left: 40px !important;
-	padding-right: 40px !important;
-	padding-bottom: 20px !important;
+    padding-right: 0px !important;
+    padding-bottom: 40px !important;
 }
 
 .home-wrapper a {
@@ -4101,5 +4106,79 @@ body.template-etickets {
 	content: '\e811';
 	margin-right: 0.5em;
 }
+
+.ajax-message {
+	position: fixed !important;
+}
+
+.cd-nav .lang-wrapper {
+	padding-left: 20px !important;
+    padding-right: 40px !important;
+    padding-bottom: 20px !important;
+    line-height: 43px;
+
+    a {
+    	margin-top: 0px !important;
+    	font-family: 'Raleway', sans-serif !important;
+    	font-size: 0.875em !important;
+    }
+
+    a:not(.dropdown-toggle) {
+    	font-size: 0.875em !important;
+    }
+
+    span.current-lang a {
+    	font-weight: 700;
+    	pointer-events: none;
+    }
+
+    @media (max-width: 991px) {
+    	padding-left: 10px !important;
+    	padding-top: 120px !important;
+    }
+}
+
+.portletCalendar p.visit-msg {
+	margin-top: -100px !important;
+}
+
+body.template-tours {
+	font-size: 16px;
+
+	a.btn {
+		.buttonField();
+		text-shadow: none !important;
+	}
+
+	#tours-header {
+		padding-bottom: 40px;
+	}
+
+	th, td {
+		padding:10px;
+	}
+}
+
+body:not(.frontend) {
+	.cd-navigation-wrapper {
+		padding-top: 120px !important;
+	}
+
+	.main-block {
+		padding-top: 0px !important;
+	}
+
+	.cd-nav .lang-wrapper {
+		padding-left: 30px !important;
+	}
+}
+body.template-cart {
+	.separator-td {
+		display: none;
+	}
+}
+
+
+
 
 
