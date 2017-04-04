@@ -72,6 +72,16 @@
       <replace
         css:theme-children="#website-title h1.website-title"
         css:content-children=".documentFirstHeading"
+        method="raw" css:if-content="body.template-orders" />
+
+      <replace
+        css:theme-children="#website-title h1.website-title"
+        css:content-children=".documentFirstHeading"
+        method="raw" css:if-content="body.template-orderstours" />
+
+      <replace
+        css:theme-children="#website-title h1.website-title"
+        css:content-children=".documentFirstHeading"
         method="raw" css:if-content="body.template-checkout" />
 
       <replace

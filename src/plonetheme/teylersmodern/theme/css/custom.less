@@ -4159,6 +4159,31 @@ body.template-tours {
 	}
 }
 
+body.template-orderstours,
+body.template-orders,
+body.template-bookings {
+	#slickcarousel:before {
+		padding-top: 20%;
+	}
+}
+
+body.template-orderstours {
+	a.btn {
+		.buttonField();
+		text-shadow: none !important;
+	}
+
+	#tours-header {
+		padding-bottom: 20px;
+	}
+}
+
+body.template-orders {
+	#tours-header a.btn {
+		display: none;
+	}
+}
+
 body:not(.frontend) {
 	.cd-navigation-wrapper {
 		padding-top: 120px !important;
@@ -4178,7 +4203,93 @@ body.template-cart {
 	}
 }
 
+.pat-plone [class*="contenttype-"]:before {
+    font-family: "Fontello";
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    left: inherit;
+    display: inline-block;
+    color: inherit;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-right: 6px;
+}
 
+.pat-plone .contenttype-document:before {
+    content: '\e80e';
+}
+
+#orders_wrapper .filter {
+	padding: 0px !important;
+}
+
+#orders_wrapper {
+	.datarow-date {
+		width: 115px !important;
+	}
+
+	.datarow-actions {
+		padding: 10px 5px !important;
+		width: 0px !important;
+	}
+}
+
+body.template-orderstours {
+	.ajax-overlay {
+		position: fixed !important;
+		left: 140px !important;
+	}
+}
+
+#orders_wrapper .filter label {
+	padding-top: 10px !important;
+}
+
+body.template-orders,
+body.template-orderstours {
+
+	.intro-header {
+		position: relative;
+	}
+
+	div#website-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -209px;
+		margin-top: -40px;
+
+		h1 {
+			font-family: 'Raleway', sans-serif !important;
+		    font-weight: 800 !important;
+		    font-size: 3.125em !important;
+		    line-height: 50px !important;
+		    color: #ffffff !important;
+		    letter-spacing: 0.02em;
+		    text-transform: uppercase;
+
+		    @media (max-width: 991px) {
+				font-size: 36px !important;
+			}	
+		}
+
+		@media (max-width: 991px) {
+			margin-left: -150px;
+			margin-top: -25px;
+		}
+	}
+
+	.brand-name {
+		display: none !important;
+	}
+
+	h1.documentFirstHeading {
+		display: none !important;
+	}
+}
 
 
 
