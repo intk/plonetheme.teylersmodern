@@ -46,7 +46,7 @@
 
                      <div class="thumb-wrapper">         
                             <a class="thumb-image" tal:condition="python: ((has_media != None and has_media != '' and 'Missing' not in str([has_media])) or item_type == 'Image')" href="" tal:attributes="href python: item_link"
-                              tal:define="item_img python:view.getImageObject(item)">
+                              tal:define="item_img python:None">
                               <img tal:define="images_src python:item_img;
                                                  "
                                      src="" alt=""
