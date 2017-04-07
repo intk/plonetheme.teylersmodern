@@ -3324,10 +3324,9 @@ body.template-checkout {
 
 	div#website-title {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -209px;
-		margin-top: -40px;
+		width: 100%;
+		text-align: center;
+		top: 48%;
 
 		h1 {
 			font-family: 'Raleway', sans-serif !important;
@@ -3337,6 +3336,8 @@ body.template-checkout {
 		    color: #ffffff !important;
 		    letter-spacing: 0.02em;
 		    text-transform: uppercase;
+		    margin: 0 auto;
+		    display: block;
 
 		    @media (max-width: 991px) {
 				font-size: 36px !important;
@@ -3599,6 +3600,14 @@ body.template-checkout {
 			color: #7ed321 !important;
 		}
 
+		.table-time .time-busy:not(.time-ua) {
+		    color: #FF8428 !important;
+		}
+
+		.table-time .time-busy:not(.time-ua):hover {
+		    color: #FF8428 !important;
+		}
+
 		a.calendarNext:hover {
 			color: @brand-primary !important;
 
@@ -3816,10 +3825,9 @@ body.template-mollie_payment_success {
 
 	div#website-title {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -491px;
-		margin-top: -40px;
+		top: 48%;
+		text-align: center;
+		width: 100%;
 
 		h1 {
 			font-family: 'Raleway', sans-serif !important;
@@ -3829,6 +3837,8 @@ body.template-mollie_payment_success {
 		    color: #ffffff !important;
 		    letter-spacing: 0.02em;
 		    text-transform: uppercase;
+		    margin: 0 auto;
+		    display: block;
 
 		    @media (max-width: 991px) {
 				font-size: 36px !important;
@@ -4053,7 +4063,7 @@ body.template-etickets {
 	    font-family: sans-serif !important;
 	    text-transform: uppercase;
 	    margin-bottom: 0px !important;
-	    font-size: 50px;
+	    font-size: 40px;
 	    color: #ffffff !important;
 	    margin: 0 0 !important;
 	}
@@ -4248,10 +4258,9 @@ body.template-bookings {
 
 	div#website-title {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -209px;
-		margin-top: -40px;
+		top: 48%;
+		width: 100%;
+		text-align: center;
 
 		h1 {
 			font-family: 'Raleway', sans-serif !important;
@@ -4261,6 +4270,8 @@ body.template-bookings {
 		    color: #ffffff !important;
 		    letter-spacing: 0.02em;
 		    text-transform: uppercase;
+		    display: block;
+		    margin: 0 auto;
 
 		    @media (max-width: 991px) {
 				font-size: 36px !important;
@@ -4387,5 +4398,28 @@ body.template-etickets footer {
 body.template-etickets img.logo {
 	width: 140px !important;
 	height: auto !important;
+}
+
+.ploneCalendar td:hover {
+    background-color: #eee !important;
+}
+
+.portletCalendar {
+	box-shadow: none !important;
+}
+
+.portletCalendar .table-time {
+	padding: 0px !important;
+}
+
+.portletCalendar .table-time > p {
+	font-size: 14px !important;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+	line-height: 25px !important;
+}
+
+.separator_template td.pre-cart {
+	padding-bottom: 0px !important;
 }
 
