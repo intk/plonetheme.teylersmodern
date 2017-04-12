@@ -9,6 +9,165 @@ if (window.jQuery) {
   });
 }
 
+
+function do_ecommerce_transactions() {
+  /* Checkout steps */
+  if (jQuery("body.template-cart").length > 0) {
+    console.log("Ecommerce: Step 1.");
+
+    setTimeout(function() {
+      var category = "Product";
+      if (jQuery("body.section-tickets").length > 0) {
+        category = "Ticket";
+      }
+      /* Checkout step 1. */
+      products = [];
+      cart_items = jQuery("tr.cart_item");
+      for (var i = 0; i < cart_items.length; i++) {
+        var title = jQuery(cart_items[i]).find('.cart_item_title').text();
+        var price = jQuery(cart_items[i]).find('.cart_item_price').text();
+        var raw_quantity = jQuery(cart_items[i]).find('.cart_item_count').val();
+        var quantity = parseInt(raw_quantity);
+        if (quantity > 0) {
+          var new_product = {
+            "name": title,
+            "price": price,
+            "quantity": quantity,
+            "category": category
+          }
+          products.push(new_product);
+        }
+      }
+
+      if (typeof dataLayer != 'undefined') {
+        dataLayer.push({
+          'event': 'checkout',
+          'ecommerce': {
+            'checkout': {
+              'actionField': {'step': 1},
+              'products': products
+           }
+         },
+         'eventCallback': function() {
+            // do nothing
+         }
+        });
+      }
+    }, 2000);
+  };
+
+  /* Checkout step 2. */
+  if (jQuery("body.template-checkout").length > 0 && !jQuery("body.template-checkout #cart.final-checkout").length) {
+    console.log("Ecommerce: Step 2.");
+    var category = "Product";
+    if (jQuery("body.section-tickets").length > 0) {
+      category = "Ticket";
+    }
+
+    if (typeof dataLayer != 'undefined') {
+      dataLayer.push({
+        'event': 'checkout',
+        'ecommerce': {
+          'checkout': {
+            'actionField': {'step': 2},
+            'products': []
+         }
+       },
+       'eventCallback': function() {
+          // do nothing
+       }
+      });
+    }
+  };
+
+  /* Checkout step 3. */
+  if (jQuery("body.template-checkout").length > 0 && jQuery("body.template-checkout #cart.final-checkout").length) {
+    console.log("Ecommerce: Step 3.");
+    var category = "Product";
+    if (jQuery("body.section-tickets").length > 0) {
+      category = "Ticket";
+    }
+
+    setTimeout(function() {
+      products = [];
+      cart_items = jQuery("tr.cart_item");
+      for (var i = 0; i < cart_items.length; i++) {
+        var title = jQuery(cart_items[i]).find('.cart_item_title').text();
+        var price = jQuery(cart_items[i]).find('.cart_item_original_price').text();
+        var raw_quantity = jQuery(cart_items[i]).find('.cart_item_count').text();
+        var quantity = parseInt(raw_quantity);
+        if (quantity > 0) {
+          var new_product = {
+            "name": title,
+            "price": price,
+            "quantity": quantity,
+            "category": category
+          }
+          products.push(new_product);
+        }
+      }
+
+      if (typeof dataLayer != 'undefined') {
+        dataLayer.push({
+          'event': 'checkout',
+          'ecommerce': {
+            'checkout': {
+              'actionField': {'step': 3},
+              'products': products
+           }
+         },
+         'eventCallback': function() {
+            // do nothing
+         }
+        });
+      }
+    }, 1500); 
+  };
+
+  if (jQuery("body.template-checkout #cart.final-checkout").length > 0) {
+    jQuery("#form-checkout").submit(function(evt) {
+      console.log("Ecommerce: Step 4.");
+      var category = "Product";
+      if (jQuery("body.section-tickets").length > 0) {
+        category = "Ticket";
+      }
+
+      products = [];
+      cart_items = jQuery("tr.cart_item");
+      for (var i = 0; i < cart_items.length; i++) {
+        var title = jQuery(cart_items[i]).find('.cart_item_title').text();
+        var price = jQuery(cart_items[i]).find('.cart_item_original_price').text();
+        var raw_quantity = jQuery(cart_items[i]).find('.cart_item_count').text();
+        var quantity = parseInt(raw_quantity);
+        if (quantity > 0) {
+          var new_product = {
+            "name": title,
+            "price": price,
+            "quantity": quantity,
+            "category": category
+          }
+          products.push(new_product);
+        }
+      };
+
+      if (typeof dataLayer != 'undefined') {
+        dataLayer.push({
+          'event': 'checkout',
+          'ecommerce': {
+            'checkout': {
+              'actionField': {'step': 4},
+              'products': products
+           }
+         },
+         'eventCallback': function() {
+            // do nothing
+         }
+        });
+      }
+    });
+  };
+};
+
 var panoramas = [];
 var panorama = null;
 var interval_time = 55;
@@ -62,146 +221,26 @@ jQuery(document).ready(function($){
   }
   
   var isLateralNavAnimating = false;
-  
   //open/close lateral navigation
   jQuery('.cd-nav-trigger, .cd-nav-trigger-menu').on('click', function(event) {
     event.preventDefault();
-    //stop if nav animation is running 
-
-    /*if (jQuery('.site-KasteelDeHaar').length > 0) {
-      jQuery('.cd-nav-trigger').hide();
-    }*/
-
     if (slickCarousel != undefined) {
       if (slickCarousel.playing) {
         slickCarousel.pauseCurrentSlide();
       }
     }
-  
-
     if( !isLateralNavAnimating ) {
       if(jQuery(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true; 
-      
       jQuery('body').toggleClass('navigation-is-open');
       jQuery('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-        //animation is over
         isLateralNavAnimating = false;
-        /*console.log("transation end");
-        if (jQuery('.site-KasteelDeHaar').length > 0) {
-          jQuery('.cd-nav-trigger').show();
-        }*/
       });
     }
   });
 
-  
-
-  /* Street view functionality */
-  if (jQuery(".street-view").length > 0) {
-    jQuery(".street-view").each(function(idx, el) {
-      var options = {};
-      options['lat'] = jQuery(this).data('lat');
-      options['lng'] = jQuery(this).data('lng');
-      options['heading'] = jQuery(this).data('heading');
-      options['pitch'] = jQuery(this).data('pitch');
-      options['heading_lower'] = jQuery(this).data('headinglower');
-      options['uid'] = jQuery(this).data('uid');
-      if (jQuery(this).data('addresscontrol') == "False"){
-        options['addressControl'] = false 
-      } else {
-        options['addressControl'] = true 
-      }
-
-      if (jQuery(this).data('zoomcontrol') == "False"){
-        options['zoomControl'] = false 
-      } else {
-        options['zoomControl'] = true 
-      }
-      
-      if (jQuery(this).data('linkscontrol') == "False"){
-        options['linksControl'] = false 
-      } else{
-        options['linksControl'] = true 
-      }
-      
-      if (jQuery(this).data('pancontrol') == "False"){
-        options['panControl'] = false 
-      } else {
-        options['panControl'] = true 
-      }
-      
-      if (jQuery(this).data('enableclosebutton') == "False") {
-        options['enableCloseButton'] = false 
-      } else {
-        options['enableCloseButton'] = true 
-      }
-      
-      if (jQuery(this).data('fullscreencontrol') == "False") {
-        options['fullscreenControl'] = false 
-      } else {
-        options['fullscreenControl'] = true 
-      }
-      
-      var panorama = new google.maps.StreetViewPanorama(
-      el,
-      {
-        position: {lat: options['lat'], lng: options['lng']},
-        pov: {heading: options['heading'], pitch: options['pitch']},
-        zoom: options['zoom'],
-        addressControl: options['addressControl'],
-        zoomControl: options['zoomControl'],
-        linksControl: options['linksControl'],
-        panControl: options['panControl'],
-        enableCloseButton: options['enableCloseButton'],
-        fullscreenControl: options['fullscreenControl'],
-      });
-
-      if (options['heading_lower'] != undefined && options['heading_lower'] != '') {
-        pov_pitch = options['pitch'];
-        if (options['heading_lower'] > options['heading']) {
-          heading_low_limit = options['heading'];
-          heading_high_limit = options['heading_lower'];
-        } else {
-          heading_low_limit = options['heading_lower'];
-          heading_high_limit = options['heading'];
-        }
-        heading_middle = heading_high_limit - ((heading_high_limit - heading_low_limit) / 2);
-        options['heading_middle'] = heading_middle;
-      }
-
-      options['heading_increase'] = heading_increase;
-      var new_panorama = {
-        panorama: panorama,
-        uid: options['uid'],
-        options: options,
-        pov_interval: null,
-        pov_init: false
-      }
-      panoramas.push(new_panorama);
-    });
-  }
-
-  jQuery(".play-button").on('click', function()  {
-    var audio_div = jQuery(this).parents('.slick-slide').find('audio')[0];
-    if (jQuery(this).hasClass('playing')) {
-      jQuery(this).removeClass('playing');
-      jQuery(this).addClass('paused');
-      jQuery(this).removeClass('hi-icon-volume-up');
-      jQuery(this).addClass('hi-icon-volume-off');
-      audio_div.player.pause();
-    } else if (jQuery(this).hasClass('paused')) {
-      jQuery(this).removeClass('paused');
-      jQuery(this).addClass('playing');
-      jQuery(this).removeClass('hi-icon-volume-off');
-      jQuery(this).addClass('hi-icon-volume-up');
-      audio_div.player.play();
-    } else {
-      jQuery(this).addClass('playing');
-      audio_div.player.play();
-      jQuery(this).removeClass('hi-icon-volume-pff');
-      jQuery(this).addClass('hi-icon-volume-up');
-    }
-  });
+  /* --- ECOMMERCE --- */
+  do_ecommerce_transactions();
+  /* ----------------- */
 });
 
 require([
@@ -216,5 +255,6 @@ require([
     });
   }
 });
+
 
 
