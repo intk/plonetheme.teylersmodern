@@ -13,8 +13,6 @@ if (window.jQuery) {
 function do_ecommerce_transactions() {
   /* Checkout steps */
   if (jQuery("body.template-cart").length > 0) {
-    console.log("Ecommerce: Step 1.");
-
     setTimeout(function() {
       var category = "Product";
       if (jQuery("body.section-tickets").length > 0) {
@@ -58,7 +56,6 @@ function do_ecommerce_transactions() {
 
   /* Checkout step 2. */
   if (jQuery("body.template-checkout").length > 0 && !jQuery("body.template-checkout #cart.final-checkout").length) {
-    console.log("Ecommerce: Step 2.");
     var category = "Product";
     if (jQuery("body.section-tickets").length > 0) {
       category = "Ticket";
@@ -82,7 +79,6 @@ function do_ecommerce_transactions() {
 
   /* Checkout step 3. */
   if (jQuery("body.template-checkout").length > 0 && jQuery("body.template-checkout #cart.final-checkout").length) {
-    console.log("Ecommerce: Step 3.");
     var category = "Product";
     if (jQuery("body.section-tickets").length > 0) {
       category = "Ticket";
@@ -126,7 +122,6 @@ function do_ecommerce_transactions() {
 
   if (jQuery("body.template-checkout #cart.final-checkout").length > 0) {
     jQuery("#form-checkout").submit(function(evt) {
-      console.log("Ecommerce: Step 4.");
       var category = "Product";
       if (jQuery("body.section-tickets").length > 0) {
         category = "Ticket";
